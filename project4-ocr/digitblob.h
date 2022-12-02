@@ -1,15 +1,11 @@
 #ifndef DIGITBLOB_H
 #define DIGITBLOB_H
-
 #include <cstdint> // for uint8_t
-// Add more #includes if necessary
 #include <vector>
 
 /**
  * @brief Models a row/column location and provides an
  *        initializing constructor and comparison ability
- *
- *  COMPLETE - DO NOT ALTER
  */
 struct Location {
     int row;
@@ -104,9 +100,6 @@ public:
 private:
     void calc_bit_quads();
     void calc_euler_number();
-    //===========================================================
-    // Define appropriate, private member functions for various
-    // classificaiton tests
     void calc_centers_of_mass();
     void calc_symmetry();
     void calc_aspect_ratio();
@@ -134,11 +127,5 @@ private:
     double horizontalCentroid_;
     double horizontalSymmetry_;
     double verticalSymmetry_;
-    //===========================================================
-    // Add more data member(s) here to store the results of
-    // classification tests or other info you deem necessary
-    
-
-
 };
 #endif
