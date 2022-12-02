@@ -19,19 +19,12 @@ int main(int argc, char *argv[])
   if(argc >= 4) {
     debug = atoi(argv[3]);
   }
-
-  // ===================
-  // TO DO: Fill in the arguments to the constructors below
+  
   NumImg img1(argv[1]);
   NumImg img2(argv[2]);
-
-  // ===================
-  // TO DO: call findAndCreateDigitBlobs on each img 
-
   img1.findAndCreateDigitBlobs();
   img2.findAndCreateDigitBlobs();
-  // ===================
-  // Complete - Do not alter
+  
   if(debug == 1) {
     img1.printBoundingBoxes();
   }
@@ -65,7 +58,6 @@ int main(int argc, char *argv[])
     cout << "Image 2 digit string: " << num << endl;
   }
   else {
-    // Complete - Do not alter - Default full implementation
     string str1 = img1.classify(false);
     string str2 = img2.classify(false);
     
