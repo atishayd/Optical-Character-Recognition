@@ -8,16 +8,8 @@
 
 using namespace std;
 
-// TO DO: Complete this function
 NumImg::NumImg(const char* bmp_filename)
 {
-    
-    //  Note: readGSBMP dynamically allocates a 2D array
-    //    (i.e. array of pointers (1 per row/height) where each
-    //    point to an array of unsigned char (uint8_t) pixels)
-    
-    // TO DO:
-    // call readGSBMP to initialize img_, h_, and w_;
     img_ = readGSBMP(bmp_filename, h_, w_);
     // Leave this check
     if(img_ == NULL)
@@ -59,10 +51,8 @@ NumImg::NumImg(const char* bmp_filename)
     // Perform any other initialization you need
 }
 
-// TO DO: Complete this function
 NumImg::~NumImg()
 {
-    // Add code here if necessary
     for (int i = 0; i < h_; i++ )
     {
         delete [] img_[i];
@@ -78,7 +68,6 @@ NumImg::~NumImg()
     
 }
 
-// TO DO: Complete this function
 size_t NumImg::findAndCreateDigitBlobs()
 {
     for (int i = 0; i < h_; i++)
@@ -96,7 +85,6 @@ size_t NumImg::findAndCreateDigitBlobs()
     return blobs_.size();
 }
 
-// Complete - Do not alter
 std::string NumImg::classify(bool withDebug)
 {
     std::string res;
@@ -113,7 +101,6 @@ std::string NumImg::classify(bool withDebug)
     return res;
 }
 
-// Complete - Do not alter
 void NumImg::printBoundingBoxes() const
 {
     cout << setw(2) << "i" << setw(6) << "ULRow" << setw(6) << "ULCol" << setw(4) << "Ht." << setw(4) << "Wi." << endl;
@@ -122,13 +109,10 @@ void NumImg::printBoundingBoxes() const
         const DigitBlob& b = blobs_[i];
         cout << setw(2) << i << setw(6) << b.getUpperLeft().row << setw(6) << b.getUpperLeft().col
         << setw(4) << b.getHeight() << setw(4) << b.getWidth()  << endl;
-        // cout << "Blob " << i << " ul=(" << b.getUpperLeft().row << "," << b.getUpperLeft().col
-        //     << ") h=" << b.getHeight() << " w=" << b.getWidth() << endl;
     }
     
 }
 
-// Complete - Do not alter
 const DigitBlob& NumImg::getDigitBlob(size_t i) const
 {
     if(i >= blobs_.size())
@@ -138,19 +122,16 @@ const DigitBlob& NumImg::getDigitBlob(size_t i) const
     return blobs_[i];
 }
 
-// Complete - Do not alter
 size_t NumImg::numDigitBlobs() const
 {
     return blobs_.size();
 }
 
-// Complete - Do not alter
 void NumImg::sortDigitBlobs()
 {
     std::sort(blobs_.begin(), blobs_.end());
 }
 
-// Complete - Do not alter
 void NumImg::drawBoundingBoxesAndSave(const char* filename)
 {
     for(size_t i=0; i < blobs_.size(); i++)
@@ -171,9 +152,6 @@ void NumImg::drawBoundingBoxesAndSave(const char* filename)
     }
     writeGSBMP(filename, img_, h_, w_);
 }
-
-// TO DO:
-// Add other (helper) function definitions here
 
 DigitBlob NumImg::createDigitBlob(bool** explored, int pr, int pc)
 {
