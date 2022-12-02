@@ -1,33 +1,15 @@
 #ifndef NUMIMG_H
 #define NUMIMG_H
-
 #include "bmplib.h"
-// Add more #includes as needed
 #include "digitblob.h"
 #include <vector>
 #include <string>
 
-
-/**
- * @brief Reads, owns, and manages the pixel array representing an 
- *        8-bit grayscale image with digits to be recognized as a 
- *        number.
- * 
- */
 class NumImg {
 public:
-    /**
-     * @brief Construct a new Num Img object by reading an 8-bit
-     *         grayscale BMP image.
-     * 
-     * @param bmp_filename C-string of the filename to read
-     */
+  
     NumImg(const char* bmp_filename);
     
-    /**
-     * @brief Destructor
-     * 
-     */
     ~NumImg();
 
     /**
@@ -113,16 +95,6 @@ private:
      * @return DigitBlob corresponding to this newly found digit
      */
     DigitBlob createDigitBlob(bool** explored, int pr, int pc);
-
-    //===========================================================
-    //  Add other private functions as necessary
-
-
-
-
-    //===========================================================
-    //  Data members
-
     /// Pointer to the 2D dynamically allocated array of pixels
     uint8_t** img_;
     /// Height and width of input image (not always 256x256)
@@ -130,10 +102,6 @@ private:
     int w_;
     /// Vector to store the DigitBlobs we find in the image
     std::vector<DigitBlob> blobs_;
-
-    //===========================================================
-    // Add appropriate data member(s) here to store the Digit objects
-    // or any other data that needs to be tracked
     bool** explored;
 };
 #endif
