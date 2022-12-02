@@ -14,13 +14,7 @@ BigInt::BigInt(std::string s, int base) //Constructor
         {
             int x = static_cast<int>(c) - '0';
             vec.push_back(x);
-        }
-        // else
-        // {
-        //     int y = 10 + static_cast<int>(c) - 'A';
-        //     vec.push_back(y);
-        // }
-        
+        } 
     }
     removeLeadingZeroes();
     // convert string to BigInt
