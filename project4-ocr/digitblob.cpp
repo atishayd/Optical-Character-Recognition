@@ -25,7 +25,6 @@ bool Location::operator<(const Location& other) const
   return false;
 }
 
-// TO DO - Complete this function
 DigitBlob::DigitBlob()
 {
     img_ = NULL;
@@ -43,7 +42,7 @@ DigitBlob::DigitBlob()
     verticalCentroid_ = 0;
     horizontalCentroid_ = 0;
 }
-// TO DO - Complete this function
+
 DigitBlob::DigitBlob(uint8_t** img, Location upperleft, int height, int width)
 {
     img_ = img;
@@ -59,11 +58,9 @@ DigitBlob::DigitBlob(uint8_t** img, Location upperleft, int height, int width)
 
 }
 
-// TO DO - Complete this function if necessary
+
 DigitBlob::~DigitBlob()
 {
-    // Add code if it is necessary
-
 }
 
 // TO DO - Complete this function
@@ -74,12 +71,7 @@ void DigitBlob::classify()
     calc_symmetry();
     calc_centers_of_mass();
     // Call helper functions to calculate features
-
-
-    // TO DO: use the results of helper functions to calculate features
-    //    We suggest starting with the Euler number but you are free to
-    //    change our structure   
-
+    
     if (euler_ == 0)
     {
         if (verticalCentroid_ >= 0.50 && verticalCentroid_ <= 0.57)
@@ -181,13 +173,11 @@ void DigitBlob::classify()
     getClassification();
 }
 
-// Complete - Do not alter
 char DigitBlob::getClassification() const
 {
     return digit_;
 }
 
-// TO DO - Complete this function
 void DigitBlob::printClassificationResults() const
 {
     cout << "Digit blob at " << ul_.row << "," << ul_.col << " h=" << h_ << " w=" << w_ << endl;
@@ -195,7 +185,6 @@ void DigitBlob::printClassificationResults() const
     cout << " " << bq1_ << " " << bq2_ << " " << bqd_;
     cout << " " << bq3_ << " " << bq4_ << endl;
     cout << "Euler number is " << euler_ << endl;
-    // TO DO: Add any other couts to print classification test data
     cout << "Vertical Center: " << verticalCentroid_ << endl;
     cout << "Horizontal Center: " << horizontalCentroid_ << endl;
     cout << "Vertical Symmetry: " << verticalSymmetry_ << endl;
@@ -206,32 +195,27 @@ void DigitBlob::printClassificationResults() const
 
 }
 
-// Complete - Do not alter
 const Location& DigitBlob::getUpperLeft() const
 {
     return ul_;
 }
 
-// Complete - Do not alter
 int DigitBlob::getHeight() const
 {
     return h_;
 }
 
-// Complete - Do not alter
 int DigitBlob::getWidth() const
 {
     return w_;
 }
 
-// Complete - Do not alter
 bool DigitBlob::operator<(const DigitBlob& other)
 {
     // Use Location's operator< for DigitBlob operator<
     return ul_ < other.ul_;
 }
 
-// Complete - Do not alter
 void DigitBlob::calc_euler_number()
 {
     euler_ = (bq1_ - bq3_ - 2*bqd_) / 4;
@@ -266,7 +250,6 @@ void DigitBlob::calc_centers_of_mass()
     verticalCentroid_ = verticalSum;
 }
 
-// TO DO - Complete this function to set bq1_, bq2_, etc.
 void DigitBlob::calc_bit_quads()
 {
     for(int i=ul_.row-1; i < ul_.row + h_ ; i++)
@@ -356,6 +339,3 @@ void DigitBlob::calc_symmetry()
     horizontalSymmetry_ = horizontalCount/size;
     verticalSymmetry_ = verticalCount/size;
 }
-
-// Add more private helper function implementations below
-
